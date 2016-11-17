@@ -1,14 +1,7 @@
-docker-maven
+docker-maven-jdk-oracle
 ============
 
-# Supported tags and respective Dockerfile links
-
-* [jdk-7](https://github.com/carlossg/docker-maven/blob/master/jdk-7/Dockerfile)
-* [jdk-7-onbuild](https://github.com/carlossg/docker-maven/blob/master/jdk-7/onbuild/Dockerfile)
-* [latest, jdk-8](https://github.com/carlossg/docker-maven/blob/master/jdk-8/Dockerfile)
-* [onbuild, jdk-8-onbuild](https://github.com/carlossg/docker-maven/blob/master/jdk-8/onbuild/Dockerfile)
-* [jdk-9](https://github.com/carlossg/docker-maven/blob/master/jdk-9/Dockerfile)
-* [jdk-9-onbuild](https://github.com/carlossg/docker-maven/blob/master/jdk-9/onbuild/Dockerfile)
+This image is based on the [docker-maven image](https://github.com/carlossg/docker-maven)
 
 # What is Maven?
 
@@ -19,21 +12,6 @@ reporting and documentation from a central piece of information.
 
 
 # How to use this image
-
-## Create a Dockerfile in your Maven project
-
-    FROM maven:3.3-jdk-7-onbuild
-    CMD ["do-something-with-built-packages"]
-
-Put this file in the root of your project, next to the pom.xml.
-
-This image includes multiple ONBUILD triggers which should be all you need to bootstrap.
-The build will `COPY . /usr/src/app` and `RUN mvn install`.
-
-You can then build and run the image:
-
-    docker build -t my-maven .
-    docker run -it --name my-maven-script my-maven
 
 
 ## Run a single Maven command
@@ -85,33 +63,3 @@ For example, to run as user `1000` mounting the host' Maven repo
 Build with the usual
 
     docker build -t maven .
-
-Tests are written using [bats](https://github.com/sstephenson/bats) under the `tests` dir.
-Use the env var TAG to choose what image to run tests against.
-
-    TAG=jdk-8 bats tests
-
-or run all the tests with
-
-    for tag in jdk-7 jdk-8 jdk-9; do TAG=$tag bats tests; done
-
-Bats can be easily installed with `brew install bats` on OS X
-
-
-# User Feedback
-
-## Issues
-
-If you have any problems with or questions about this image, please contact us
-through a [GitHub issue](https://github.com/carlossg/docker-maven/issues).
-
-You can also reach many of the official image maintainers via the `#docker-library` IRC channel on Freenode.
-
-## Contributing
-
-You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
-
-Before you start to code, we recommend discussing your plans through a [GitHub issue](https://github.com/carlossg/docker-maven/issues),
-especially for more ambitious contributions.
-This gives other contributors a chance to point you in the right direction,
-give you feedback on your design, and help you find out if someone else is working on the same thing.

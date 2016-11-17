@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM isuper/java-oracle:jdk_8
 
 ARG MAVEN_VERSION=3.3.9
 ARG USER_HOME_DIR="/root"
